@@ -24,6 +24,7 @@ class CurrentWeatherView extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  
                   Image.network(
                     WeatherApiService.iconUrlFromId(
                         forecast.weather.first.icon),

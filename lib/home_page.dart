@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:live_weather_api_demo/api_key_service.dart';
+import 'package:live_weather_api_demo/drawer_menu.dart';
 import 'package:live_weather_api_demo/geo_position.dart';
 import 'package:live_weather_api_demo/location_service.dart';
 import 'package:live_weather_api_demo/weather_api_response.dart';
@@ -19,6 +20,8 @@ class HomePageState extends State<HomePage> {
   GeoPosition? userPosition;
   WeatherApiResponse? weatherApiResponse;
 
+  List<String> cities = ["Paris", "Nice", "Marseille"];
+
   @override
   void initState() {
     getUserPosition();
@@ -32,7 +35,8 @@ class HomePageState extends State<HomePage> {
           backgroundColor: Colors.blue,
           title: const Text("Weather Api Demo"),
         ),
-        body: ForcastView(weatherApiResponse: weatherApiResponse));
+        body: ForcastView(weatherApiResponse: weatherApiResponse),
+        drawer: DrawerMenu(cities: cities, onTap: onMenuItemTap));
   }
 
   //getUserLocation() async {
@@ -52,5 +56,9 @@ class HomePageState extends State<HomePage> {
     setState(() {
       weatherApiResponse = currentResponses;
     });
+  }
+
+  onMenuItemTap(String s) {
+    debugPrint("onTap: $s");
   }
 }
