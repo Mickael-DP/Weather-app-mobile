@@ -27,7 +27,7 @@ class DrawerMenu extends StatelessWidget {
       child: Column(
         children: [
           Icon(
-            Icons.location_city_outlined,
+            Icons.location_pin,
             size: 40,
             color: Colors.pink,
           ),
@@ -48,4 +48,5 @@ class DrawerMenu extends StatelessWidget {
         ),
         onTap: () => onTap(s));
   }
+
 }

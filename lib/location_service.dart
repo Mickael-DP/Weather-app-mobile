@@ -23,12 +23,20 @@ class LocationService {
     final double lat = position?.latitude ?? 0;
     final double lon = position?.longitude ?? 0;
 
-    
     List<geocoding.Placemark> placemark =
         await geocoding.placemarkFromCoordinates(lat, lon);
     debugPrint(placemark.toString());
     final firstPlace = placemark.first;
     return GeoPosition(city: firstPlace.locality ?? "", lat: lat, lon: lon);
+  }
+
+  // convert city name -> (lat,lon)
+  Future<GeoPosition?> getCoordsFromCity(String city) async {
+    List<geocoding.Location> locations =
+        await geocoding.locationFromAddress(city);
+    final location = locations.first;
+    return GeoPosition(
+        city: city, lat: location.latitude, lon: location.longitude);
   }
 
   getLocation() {}

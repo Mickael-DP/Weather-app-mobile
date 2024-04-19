@@ -4,8 +4,10 @@ import 'package:live_weather_api_demo/weather_api_service.dart';
 
 class CurrentWeatherView extends StatelessWidget {
   final Forecast forecast;
+  final String cityName;
 
-  const CurrentWeatherView({super.key, required this.forecast});
+  const CurrentWeatherView(
+      {super.key, required this.forecast, required this.cityName});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,6 @@ class CurrentWeatherView extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  
                   Image.network(
                     WeatherApiService.iconUrlFromId(
                         forecast.weather.first.icon),
@@ -33,6 +34,7 @@ class CurrentWeatherView extends StatelessWidget {
                       style: const TextStyle(fontSize: 26))
                 ],
               ),
+              Text(cityName, style: const TextStyle(fontSize: 40)),
               const Spacer(),
               Text(forecast.weather.first.description,
                   style: const TextStyle(fontSize: 24)),

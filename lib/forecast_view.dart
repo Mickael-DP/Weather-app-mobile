@@ -31,7 +31,9 @@ class ForcastView extends StatelessWidget {
 
     return Column(
       children: [
-        CurrentWeatherView(forecast: weatherApiResponse!.list.first),
+        CurrentWeatherView(
+            forecast: weatherApiResponse!.list.first,
+            cityName: weatherApiResponse!.city.name),
         Expanded(
           child: ListView.separated(
             itemBuilder: (context, index) =>
